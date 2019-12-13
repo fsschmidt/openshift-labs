@@ -1,0 +1,58 @@
+--- /home/fabio-bktech.com.br/cakephp-mysql-persistent.yml      2019-12-12 14:55:39.523299621 -0500
++++ openshift/multi-project-templates/cakephp-mysql-persistent.yml      2019-12-12 21:41:12.345934235 -0500
+@@ -33,6 +33,13 @@
+     The OpenShift Namespace where the Database deployment and service reside.
+   required: true
+   value: cakephp-example-database
++- name: FRONTEND_NAMESPACE
++  displayName: Frontend Namespace
++  description: >-
++    The OpenShift Namespace where the Frontend application deployment, route,
++    and service reside.
++  required: true
++  value: cakephp-example-frontend
+ - name: IMAGE_NAMESPACE
+   displayName: Image Namespace
+   description: The OpenShift Namespace where the PHP S2I ImageStream resides.
+@@ -150,3 +157,41 @@
+             limits:
+               cpu: "1"
+               memory: ${MEMORY_MYSQL_LIMIT}
++- kind: NetworkPolicy
++  apiVersion: networking.k8s.io/v1
++  metadata:
++    name: deny-by-default
++    namespace: ${DATABASE_NAMESPACE}
++  spec:
++    podSelector: {}
++    policyTypes:
++    - Ingress
++- kind: NetworkPolicy
++  apiVersion: networking.k8s.io/v1
++  metadata:
++    name: allow-same-namespace
++    namespace: ${DATABASE_NAMESPACE}
++  spec:
++    podSelector:
++    policyTypes:
++    - Ingress
++    ingress:
++    - from:
++      - podSelector: {}
++- kind: NetworkPolicy
++  apiVersion: networking.k8s.io/v1
++  metadata:
++    name: allow-frontend-to-database
++    namespace: ${DATABASE_NAMESPACE}
++  spec:
++    podSelector:
++      matchLabels:
++        name: ${DATABASE_SERVICE_NAME}
++    ingress:
++    - from:
++      - namespaceSelector:
++          matchLabels:
++            name: ${FRONTEND_NAMESPACE}
++      ports:
++      - protocol: TCP
++        port: 3306
