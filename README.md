@@ -27,3 +27,10 @@ Openshift labs
 -f openshift/multi-project-templates/cakephp-mysql-frontend.yml \
 | oc apply -f -`
 
+3
+
+`patch -p0 cakephp-mysql-persistent.yml < cakephp-mysql-persistent.patch`
+
+`cd $HOME/cakephp-ex/openshift/multi-project-templates`
+
+`oc process --local --param-file=openshift/multi-project-templates/parameters.yml --ignore-unknown-parameters -f openshift/multi-project-templates/cakephp-mysql-persistent.yml | oc apply -f -`
