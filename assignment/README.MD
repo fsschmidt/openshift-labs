@@ -16,4 +16,4 @@
 
 - [ ] Logging and monitoring are running on the infra nodes
 
-- [ ]Elasticsearch should run on two nodes and have SingleRedundancy
+- [ ] Elasticsearch should run on two nodes and have SingleRedundancy
