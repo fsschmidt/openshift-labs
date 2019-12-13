@@ -1,0 +1,20 @@
+--- a/openshift/multi-project-templates/cakephp-namespaces.yml
++++ cakephp-namespaces.yml
+@@ -51,11 +51,17 @@ objects:
+   apiVersion: v1
+   metadata:
+     name: ${BUILD_NAMESPACE}
++    labels:
++      name: ${BUILD_NAMESPACE}
+ - kind: Namespace
+   apiVersion: v1
+   metadata:
+     name: ${FRONTEND_NAMESPACE}
++    labels:
++      name: ${FRONTEND_NAMESPACE}
+ - kind: Namespace
+   apiVersion: v1
+   metadata:
+     name: ${DATABASE_NAMESPACE}
++    labels:
++      name: ${DATABASE_NAMESPACE}
