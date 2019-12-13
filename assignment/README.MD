@@ -2,8 +2,6 @@
 
 ## Cluster Architecture Requirements
 
-- [ ] Open a pull request
-
 - [ ] There are three master nodes working
 
 - [ ] There are two worker nodes
