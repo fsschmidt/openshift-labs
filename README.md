@@ -15,8 +15,11 @@ Openshift labs
 2
 
 `cd $HOME/cakephp-ex/openshift/multi-project-templates`
+
 `patch -p0 cakephp-mysql-frontend.yml < cakephp-mysql-frontend.patch`
+
 `cd ../../`
+
 `oc process --local \
 --param=VERSION=0.1 \
 --param-file=openshift/multi-project-templates/parameters.yml \
