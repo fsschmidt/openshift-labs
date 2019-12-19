@@ -1,0 +1,4 @@
+oc get pod -n openshift-image-registry -o wide
+oc get node <image-registry> -o wide
+
+Roles should be infra,workder
