@@ -1,0 +1,88 @@
+apiVersion: imageregistry.operator.openshift.io/v1
+kind: Config
+metadata:
+  creationTimestamp: "2019-12-17T18:14:05Z"
+  finalizers:
+  - imageregistry.operator.openshift.io/finalizer
+  generation: 3
+  name: cluster
+  resourceVersion: "406189"
+  selfLink: /apis/imageregistry.operator.openshift.io/v1/configs/cluster
+  uid: 0291ab35-20f9-11ea-a398-06f7e2f3042c
+spec:
+  defaultRoute: false
+  httpSecret: a676809f784bfa2d5ea4e68d1c59447fd10cb84324313243aefb69ca11b044bcc2dfb3169065c648c27efd3de313a034525ded1bc8d507e94198c7710d9cf382
+  logging: 2
+  managementState: Managed
+  nodeSelector:
+    node-role.kubernetes.io/infra: ""
+  proxy:
+    http: ""
+    https: ""
+    noProxy: ""
+  readOnly: false
+  replicas: 1
+  requests:
+    read:
+      maxInQueue: 0
+      maxRunning: 0
+      maxWaitInQueue: 0s
+    write:
+      maxInQueue: 0
+      maxRunning: 0
+      maxWaitInQueue: 0s
+  storage:
+    s3:
+      bucket: image-registry-us-east-2-28bbdfc2c98048deb7e59e57b954ac8b-029c
+      encrypt: true
+      keyID: ""
+      region: us-east-2
+      regionEndpoint: ""
+status:
+  conditions:
+  - lastTransitionTime: "2019-12-17T18:14:05Z"
+    reason: S3 Bucket Exists
+    status: "True"
+    type: StorageExists
+  - lastTransitionTime: "2019-12-17T18:14:05Z"
+    message: UserTags were successfully applied to the S3 bucket
+    reason: Tagging Successful
+    status: "True"
+    type: StorageTagged
+  - lastTransitionTime: "2019-12-17T18:14:06Z"
+    message: Default AES256 encryption was successfully enabled on the S3 bucket
+    reason: Encryption Successful
+    status: "True"
+    type: StorageEncrypted
+  - lastTransitionTime: "2019-12-17T18:14:06Z"
+    message: Default cleanup of incomplete multipart uploads after one (1) day was
+      successfully enabled
+    reason: Enable Cleanup Successful
+    status: "True"
+    type: StorageIncompleteUploadCleanupEnabled
+  - lastTransitionTime: "2019-12-17T18:15:30Z"
+    message: The registry is ready
+    reason: Ready
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2019-12-18T18:54:14Z"
+    message: The registry is ready
+    reason: Ready
+    status: "False"
+    type: Progressing
+  - lastTransitionTime: "2019-12-17T18:14:06Z"
+    status: "False"
+    type: Degraded
+  - lastTransitionTime: "2019-12-17T18:14:06Z"
+    status: "False"
+    type: Removed
+  observedGeneration: 3
+  readyReplicas: 0
+  storage:
+    s3:
+      bucket: image-registry-us-east-2-28bbdfc2c98048deb7e59e57b954ac8b-029c
+      encrypt: true
+      keyID: ""
+      region: us-east-2
+      regionEndpoint: ""
+  storageManaged: true
