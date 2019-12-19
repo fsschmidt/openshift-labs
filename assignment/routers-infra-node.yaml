@@ -1,0 +1,27 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  creationTimestamp: "2019-12-17T18:14:04Z"
+  finalizers:
+  - ingresscontroller.operator.openshift.io/finalizer-ingresscontroller
+  generation: 2
+  name: default
+  namespace: openshift-ingress-operator
+  resourceVersion: "404264"
+  selfLink: /apis/operator.openshift.io/v1/namespaces/openshift-ingress-operator/ingresscontrollers/default
+  uid: 022bc8c8-20f9-11ea-a098-0a3d60973bfa
+spec:
+  nodePlacement:
+    nodeSelector:
+      matchLabels:
+        node-role.kubernetes.io/infra: ""
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2019-12-17T18:15:20Z"
+    status: "True"
+    type: Available
+  domain: apps.cluster-4d56.sandbox779.opentlc.com
+  endpointPublishingStrategy:
+    type: LoadBalancerService
+  selector: ingresscontroller.operator.openshift.io/deployment-ingresscontroller=default
